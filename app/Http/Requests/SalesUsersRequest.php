@@ -24,7 +24,8 @@ class SalesUsersRequest extends FormRequest
     public function rules()
     {
         return [
-            'emailAddress'        => "required|email|unique:sales_users",
+            'name'                => 'required|max:200',
+            'emailAddress'        => 'required|email|unique:sales_users',
             'telephoneNumbers'    => 'required|max:15',
             'joinedDates'         => 'required|max:20',
             'currentRoutes'       => 'required|max:200',

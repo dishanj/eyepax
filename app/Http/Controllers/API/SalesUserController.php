@@ -55,9 +55,16 @@ class SalesUserController extends Controller
     }
 
     //update sales users
-    public function update(SalesUsersEditRequest $request, SalesUsers $salesUsers)
+    public function update(SalesUsersEditRequest $request, $id)
     {
-        $data = $salesUsers->save();
+        $data = SalesUsers::find($id); 
+        $data->name = $request->name;
+        $data->emailAddress = $request->emailAddress;
+        $data->telephoneNumbers = $request->telephoneNumbers;
+        $data->joinedDates = $request->joinedDates;
+        $data->currentRoutes = $request->currentRoutes;
+        $data->comments = $request->comments;
+        $data =  $data->save();
         if($data){
             return response()->json([APIResponseMessage::SUCCESS_STATUS], 200);
         } else{

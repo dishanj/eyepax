@@ -10,6 +10,7 @@ class SalesUsers extends Model
     use HasFactory;
     protected $table = "sales_users"; 
     protected $fillable = [
+        'name',
         'emailAddress',
         'telephoneNumbers',
         'joinedDates',
